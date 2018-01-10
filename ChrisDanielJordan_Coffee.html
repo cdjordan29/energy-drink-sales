@@ -1,0 +1,326 @@
+
+<!DOCTYPE html>
+
+<!-- ChrisDanielJordan_Coffee.html 
+     This is an energy drink form thats validated with PHP
+	 <author> Daniel Jordan
+	 <date> 4/24/16
+     -->
+
+<html lang = "en">
+
+  <head>
+    
+<title>Energy Drink Sales - for college student finals</title>
+    <meta charset = "utf-8" />
+    <style type = "text/css">
+	  body {margin-left: 50px;
+			margin-right: 50px;
+			font-size: 16pt;
+			font-weight: bold;
+			background-color: black;
+			color: white;}
+      td, table {border: thin solid black;
+					 border-color: orange;}
+	  h3 {color: green;}
+	  h2 {color: green;}
+	  th {color: green;}
+    </style>
+	<script type="text/javascript" >
+	
+		function chkName()
+		{
+			var name = document.getElementById("fn");
+			var namePos = name.value.search(/^[A-Z][a-z]+$/);
+			if(namePos != 0)
+			{
+				alert("The name you entered (" + name.value + ") is not correct. \n"
+					  + "The correct form is all alphabetic, please go back and fix the name.");
+				return false;
+			}
+			else
+				return true;
+		}
+		
+		function chkPhone()
+		{
+			var phone = document.getElementById("pn");
+			var phonePos = phone.value.search(/^\d{3}-\d{3}-\d{4}$/);
+			if(phonePos != 0)
+			{
+				alert("The phone number you entered is not correct.\n"
+					  + "The correct for is nnn-nnn-nnnn.");
+				return false;
+			}
+			else	
+				return true;
+		}
+	
+		function chkRedBull()
+		{
+			var redBullTotal = 0;
+			var redBullQuantity = document.getElementById("rb");
+			redBullTotal = redBullQuantity.value * 8.50;
+			return redBullTotal;
+		}
+		function chkMonster()
+		{
+			var monsterTotal = 0;
+			var monsterQuantity = document.getElementById("mon");
+			monsterTotal = monsterQuantity * 10;
+			return monsterTotal;
+		}
+		function chkKickStart()
+		{
+			var kickTotal = 0;
+			var kickQuantity = document.getElementById("ks");
+			kickTotal = kickQuantity * 7.50;
+			return kickTotal;
+		}
+		function chkNos()
+		{
+			var nosTotal = 0;
+			var nosQuantity = document.getElementById("ns");
+			nosTotal = nosQuantity * 8;
+			return nosTotal;
+		}
+		function chkPayment()
+		{
+			var output = "";
+			var visa;
+			var master;
+			var discover;
+			var check;
+			
+				if(visa = document.getElementById("vs").checked)
+				{
+					output = "Visa";
+				}
+				if(master = document.getElementById("ms").checked)
+				{
+					output = "Master Card";
+				}
+				if(discover = document.getElementById("ds").checked)
+				{
+					output = "Discover Card";
+				}
+				if(check = document.getElementById("ck").checked)
+				{
+					output = "Check";
+				}
+				
+			return output;
+		}
+		function chkTotal()
+		{
+			if(chkName() && chkPhone())
+			{
+				var rbTotal = chkRedBull();
+				var monTotal = chkMonster();
+				var ksTotal = chkKickStart();
+				var nTotal = chkNos();
+								
+				var grandTotal = rbTotal + monTotal + ksTotal + nTotal;
+				
+				return grandTotal;
+			}
+		}
+		function chkClear()
+		{
+			var name = document.getElementById("fn");
+			name = " ";
+			var phone = document.getElementById("pn");
+			phone = " ";
+			var redBull = document.getElementById("rb");
+			redBull = " ";
+			var monster = document.getElementById("mon");
+			monster = " ";
+			var kickstart = document.getElementById("ks");
+			kickstart = " ";
+			var nos = document.getElementById("ns");
+			nos = " ";
+		}
+	</script>
+</head>
+
+  <body>
+
+
+    <form action = "http://localhost/myPrograms/Homework6.php"
+          method = "post">
+
+      <h2> FINALS ENERGY DRINK SALE EXTRAVAGANZA </h2>
+
+
+      <table>
+<!-- BEGINNING OF THE TABLE-->
+	<tr>
+
+	  <td> Buyer's Name: </td>
+
+	  <td> <input type = "text"  name = "name" id = "fn"
+ 
+		      size = "30" />
+          </td>
+
+	</tr>
+
+	<tr>
+
+	  <td> Phone Number: </td>
+
+	  <td> <input type = "text"  name = "phone" id = "pn"
+ 
+		      size = "30" />
+          </td>
+
+	</tr>
+
+      </table>
+
+      <p />
+
+
+      <table>
+
+
+
+<!-- TABLE HEADINGS -->
+
+
+	<tr>
+
+	  <th> Product </th>
+
+	  <th> Price </th>
+
+	  <th> Quantity </th>
+
+	</tr>
+
+
+
+<!-- PRODUCTS FOR PURCHASE -->
+
+
+	<tr>
+
+	  <td> Red Bull (6 pack) </td>
+
+	  <td> $8.50 </td>
+
+          <td>
+ 
+	    <input type = "text"  name = "redBull" id = "rb"
+  
+		   size = "3" />
+          </td>
+
+	</tr>
+
+	<tr>
+
+	  <td> Monster (6 pack) </td>
+
+	  <td> $10.00 </td>
+
+          <td>
+ 
+	    <input type = "text"  name = "monster" id = "mon"
+
+		   size = "3" /> 
+          </td>
+	</tr>
+
+	<tr>
+
+	  <td> Mtn. Dew Kickstart (6 pack) </td>
+
+	  <td> $7.50 </td>
+
+	  <td>
+ 
+	    <input type = "text"  name = "kickstart" id = "ks"
+
+		   size = "3" />
+          </td>
+
+	</tr>
+
+	<tr>
+
+          <td> NOS grape (6 pack) </td>
+
+          <td> $8.00 </td>
+
+          <td>
+ 
+	    <input type = "text"  name = "nos" id = "ns"
+
+		   size = "3" />
+          </td>
+
+	</tr>
+
+      </table>
+
+      <p />
+
+
+
+<!-- BUTTONS FOR METHOD OF PURCHASE -->
+
+
+      <h3> Payment Method </h3>
+
+      <p>
+
+        <input type = "radio"  name = "payment" id = "vs" value = "visa" 
+
+               checked = "checked" /> 
+
+		Visa <br />
+
+        <input type = "radio"  name = "payment" id = "mc" value = "mc" />
+ 
+		Master Card <br />
+
+        <input type = "radio"  name = "payment" id = "ds" value = "discover" />
+
+		Discover <br />
+
+        <input type = "radio"  name = "payment" id = "ck" value = "check" /> 
+
+		Check <br /> <br />
+
+
+
+<!-- SUBMIT AND CLEAR -->
+
+
+        <input type = "submit" name = "submit" id = "sub" value = "Submit Order" />
+
+        <input type = "reset" name = "clear" id = "cl" value = "Clear Order Form" />
+
+      </p>
+
+    </form>
+	<script type = "text/javascript" >
+	
+		document.getElementById("fn").onchange = chkName;
+		document.getElementById("pn").onchange = chkPhone;
+		document.getElementById("rb").onchange = chkRedBull;
+		document.getElementById("mon").onchange = chkMonster;
+		document.getElementById("ks").onchange = chkKickStart;
+		document.getElementById("ns").onchange = chkNos;
+		document.getElementById("vs").onclick = chkPayment;
+		document.getElementById("mc").onclick = chkPayment;
+		document.getElementById("ds").onclick = chkPayment;
+		document.getElementById("ck").onclick = chkPayment;
+		document.getElementById("sub").onclick = chkTotal;
+		document.getElementById("cl").onclick = chkClear;
+	
+	</script>
+  </body>
+</html>
+
